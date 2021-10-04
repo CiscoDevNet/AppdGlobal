@@ -2,7 +2,7 @@
 variable "appwars" {
   type = list(map(string))
   default     = []
-  description = "App details"
+  description = "App war details"
 }
 
 
