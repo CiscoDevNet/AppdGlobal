@@ -1,6 +1,6 @@
 //Details of the app wars to be installed in remot system
 variable "appwars" {
-  type = list(map(any))
+  type = list(map(string))
   default     = []
   description = "App details"
 }
