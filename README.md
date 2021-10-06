@@ -148,11 +148,11 @@ vm_prefix(eg. terraform-)
 vm_domain(eg. lab14.lc)
 
 
-## Step 4: Execute ICO template for App Services Deployment and Instrumentation
+## Step 4: Execute ICO Workflow for App Services Deployment and Instrumentation
 
 ![alt text](https://github.com/prathjan/images/blob/main/exelegacy.png?raw=true)
 
-## Step 5: Execute ICO template for App Services Load Generation
+## Step 5: Execute ICO Workflow for App Services Load Generation
 
 ![alt text](https://github.com/prathjan/images/blob/main/exeload.png?raw=true)
 
