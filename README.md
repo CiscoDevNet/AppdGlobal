@@ -1,47 +1,35 @@
-# Enabling AppDynamics Business Insights for a legacy Java/Tomcat Multi Service Application with Cisco Intersight Service for Terraform 
+# Instrumenting legacy Tomcat application for business insights with Intersight Cloud Orchestrator (ICO)
 ## Contents
         Use Case
 
         Pre-requisites
 
-        Step 1: Intersight Target configuration for AppDynamics and on prem entities
+        Intersight Target configuration for AppDynamics and on prem entities
 
-        Step 2: Setting up TFCB Workspaces
+        Provision infrastructure and deploy App services with AppDynamics instrumentation
 
-        Step 3: Share variables with a Global Workspace
+            Step 1: Importing ICO template for App Services Deployment and Instrumentation
 
-        Step 4: Prepping infrastructure & platform for application deployment
+            Step 2: Importing ICO template for App Services Load Generation
 
-        Step 5: Database Server Deployment
+            Step 3: Setup global data
 
-        Interfacing with AppDynamics Controller API for Provisioning
+            Step 4: Execute ICO template for App Services Deployment and Instrumentation
 
-            Step 6: Use RBAC script to create AppDynamics User and license rule
+            Step 5: Execute ICO template for App Services Load Generation
 
-            Step 7: Retrieve and install AppDynamics Zero Agent using AppDynamics Controller ZFI API's 
-
-        Step 8: Deploying App Services in a multi instance Tomcat Platform
-
-        Step 9: Generate Application Load
-
-        View Application Insights in AppDynamics and Intersight
-
-        Interfacing with AppDynamics Controller API for De-provisioning
-        
-            Use RBAC script to remove AppDynamics User and license rule
-
-            Uninstall AppDynamics Zero Agent
+            Step 6: View AppDynamics Insights
 
         Undeploy applications and deprovision infrastructure
 
 
 ### Use Case
 
-* As a DevOps and App developer, use IST (Intersight Service for Terraform) to enable existing Java/Tomcat Micro services for AppDynamics Insights
+* As a DevOps and App developer, use ICO (Intersight Cloud Orchestrator) to enable existing Java/Tomcat Micro services for AppDynamics Insights
 
-* As DevOps and App Developer, use Intersight and AppDynamics to get app and infrastructure insights for Full Stack Observability
+* As DevOps and App Developer, use Intersight and AppDynamics to view app and infrastructure insights for Full Stack Observability
 
-![alt text](https://github.com/prathjan/images/blob/main/tomflow.png?raw=true)
+![alt text](https://github.com/prathjan/images/blob/main/AppdTomcat3.png?raw=true)
 
 ### Pre-requisites
 
@@ -55,7 +43,7 @@
 
 5. You will also need an account in AppDynamics SAAS Controller and should have the API Client ID and Client Secret.
 
-### Step 1: Intersight Target configuration for AppDynamics and on prem entities
+### Intersight Target configuration for AppDynamics and on prem entities
 
 You will log into your Intersight account and create the following targets. Please refer to Intersight docs for details on how to create these Targets:
 
@@ -82,201 +70,72 @@ You will log into your Intersight account and create the following targets. Plea
 
             archivist.terraform.io
 
-### Step 2: Setting up TFCB Workspaces
+### Provision infrastructure and deploy App services with AppDynamics instrumentation
 
-1. 
 
-You will set up the following workspaces in TFCB and link to the VCS repos specified. 
+## Step 1: Importing ICO template for App Services Deployment and Instrumentation
 
-    AppdGlobal -> https://github.com/prathjan/SvcAppdGlobal.git
+Clone the following github repo to get the ICO template:
 
-    AppdDb -> https://github.com/prathjan/SvcAppdDb.git 
+https://github.com/CiscoDevNet/IcoTemplates.git
 
-    AppdInfra -> https://github.com/prathjan/SvcAppdInfra.git 
+Import the template ** Exportlegacy.json ** in Intersight:
 
-    AppdSaas -> https://github.com/prathjan/SvcAppdSaas.git 
+![alt text](https://github.com/prathjan/images/blob/main/importleg.png?raw=true)
 
-    AppdRbac -> https://github.com/prathjan/SvcAppdRbac.git
+## Step 2: Importing ICO template for App Services Load Generation
 
-    AppdApp -> https://github.com/prathjan/SvcAppdApp.git
+Import the template ** Exportlegacy.json ** in Intersight:
 
-    AppdLoad -> https://github.com/prathjan/SvcAppdLoad.git 
+![alt text](https://github.com/prathjan/images/blob/main/importload.png?raw=true)
 
-    AppdRemove -> https://github.com/prathjan/SvcAppdRemove.git 
 
+## Step 3: Setup global data
 
-2. 
+In Intersight, you will set up the data specific to your environment in this step. 
 
-You will set up the AppdGlobal workspace here. Add all the variables defined here as your TFCB workspace variables: https://github.com/prathjan/SvcAppdGlobal/blob/main/terraform.auto.tfvars
+Open Orchestration-> UpdateLegacyVars->Update AppdGlobal Variables Task:
 
-In addition, you will define the following. These are not included in the terraform.auto.tfvars file since its specific to your setup and has sensitive info:
+![alt text](https://github.com/prathjan/images/blob/main/globvar.png?raw=true)
 
-root_password - Root password to access your VM's
+ Add the following variables:
 
-vsphere_password - vSphere administrator password
+vsphere_user(administrator@vsphere.local)
+vm_memory(8192)
+nbrapm(8)
+nbrma(1)
+nbrsim(1)
+nbrnet(0)
+vm_cpu(4)
+vm_count (1)
 
-mysql_pass - MySql admin password (use root/root)
+Add the following sensitive variables:
+root_password
+mysql_pass
+vsphere_password
 
-Please also set this workspace to share its data with other workspaces in the organization by enabling Settings->General Settings->Share State Globally.
+Next, open Orchestration-> UpdateLegacyVars->Update AppdGlobal Variables2 Task and add the following variables:
 
-3. 
+appport(8085)
+vsphere_server(10.88.168.24)
+datacenter(Piso14-Lab)
+resource_pool(ccmsuite)
+datastore_name(CCPHXM4)
+network_name(vm-network-6)
+template_name(ubuntu-tmp)
+vm_folder(terraform)
+vm_prefix(terraform-)
+vm_domain(lab14.lc)
 
-You will set up the AppdDb workspace here
-Set Execution Mode as Agent and select the TF Cloud Agent that you have provisioned.Please also set this workspace to share its data with other workspaces in the organization by enabling Settings->General Settings->Share State Globally.
 
-You will set the following variables:
+## Step 4: Execute ICO template for App Services Deployment and Instrumentation
 
-globalwsname - AppdGlobal
+![alt text](https://github.com/prathjan/images/blob/main/exelegacy.png?raw=true)
 
-org - TFCB organization like "CiscoDevNet" or "Lab14"
+## Step 5: Execute ICO template for App Services Load Generation
 
-4. 
+![alt text](https://github.com/prathjan/images/blob/main/exeload.png?raw=true)
 
-You will set up the AppdInfra workspace here.
-
-Set Execution Mode as Agent and select the TF Cloud Agent that you have provisioned.Please also set this workspace to share its data with other workspaces in the organization by enabling Settings->General Settings->Share State Globally.
-
-You will set the following variables:
-
-globalwsname - AppdGlobal	
-
-dbvmwsname - AppdDb
-
-org - TFCB organization like "CiscoDevNet" or "Lab14"
-
-5. 
-
-You will set up the AppdSaas workspace here.
-
-Set Execution Mode as Remote.Please also set this workspace to share its data with other workspaces in the organization by enabling Settings->General Settings->Share State Globally.
-
-You will set the following variables:
-
-appname - ChaiStore, for example
-
-javaver - java version like 21.5.0.32605	
-
-clientid - AppDynamics API Client ID	
-
-clientsecret - AppDynamics API Client Secret	
-
-zerover - AppDynamics Zero Agent version like "21.6.0.232"	
-
-infraver - AppDynamics Infra Agent version like 21.5.0.1784	
-
-machinever - AppDynamics Machine Agent version like 21.6.0.3155	
-
-ibmver - AppDynamics IBM Java Agent version 21.6.0.32801	
-
-url - AppDynamics Controller URL https://devnet.saas.appdynamics.com	
-
-
-6. 
-
-You will set up the AppdRbac workspace here.
-
-Set Execution Mode as Agent and select the TF Cloud Agent that you have provisioned.
-
-You will set the following variables:
-
-appvmwsname - AppdInfra	
-
-saaswsname - AppdSaas	
-
-globalwsname - AppdGlobal
-
-org - TFCB organization like "CiscoDevNet" or "Lab14"
-
-7.
-
-You will set up the AppdApp workspace here.
-
-Set Execution Mode as Agent and select the TF Cloud Agent that you have provisioned.Please also set this workspace to share its data with other workspaces in the organization by enabling Settings->General Settings->Share State Globally.
-
-You will set the following variables:
-
-globalwsname - AppdGlobal
-
-dbvmwsname - AppdDb	
-
-appvmwsname - AppdInfra
-
-org - TFCB organization like "CiscoDevNet" or "Lab14"
-
-8. 
-
-You will set up the AppdLoad workspace here.
-
-Set Execution Mode as Agent and select the TF Cloud Agent that you have provisioned.Please also set this workspace to share its data with other workspaces in the organization by enabling Settings->General Settings->Share State Globally.
-
-You will set the following variables:
-
-globalwsname - AppdGlobal	
-
-appvmwsname - AppdInfra
-
-org - TFCB organization like "CiscoDevNet" or "Lab14"
-
-trigcount - trigger count, set to sone random number
-
-9.
-
-You will set up the AppdRemove workspace here.
-
-Set Execution Mode as Agent and select the TF Cloud Agent that you have provisioned.Please also set this workspace to share its data with other workspaces in the organization by enabling Settings->General Settings->Share State Globally.
-
-You will set the following variables:
-
-globalwsname - AppdGlobal	
-
-appvmwsname - AppdInfra
-
-org - TFCB organization like "CiscoDevNet" or "Lab14"
-
-trigcount - trigger count, set to sone random number
-
-
-### Step 3: Share variables with a Global Workspace
-
-Execute the AppDGlobal TFCB workspace to setup the global variables for other workspaces. Check for a sucessful Run before progressing to the next step.
-        
-### Step 4: Prepping infrastructure & platform for application deployment
-
-Execute the AppdInfra TFCB workspace to set up the VM infrastructure for app hosting. Check for a sucessful Run before progressing to the next step.
-
-### Step 5: Database Server Deployment
-
-Execute the AppdDb TFCB workspace to set up the mysql database for the microservices. Check for a sucessful Run before progressing to the next step.
-
-### Step 6: Interfacing with AppDynamics Controller API for Provisioning - Retrieve and install AppDynamics Zero Agent using AppDynamics Controller ZFI API's 
-
-Execute the AppdSaas TFCB workspace to retrieve ZFI download and install commands for Zero agent. Check for a sucessful Run before progressing to the next step.
-
-
-### Step 7: Interfacing with AppDynamics Controller API for Provisioning - Use RBAC script to create AppDynamics User/Role/license rule and retrieve accesskey
-
-Execute the AppdRbac TFCB workspace to set up the AppDynamics Zero Agent on the infrastructure provisioned. Check for a sucessful Run before progressing to the next step.
-
-### Step 8: Deploying App Services in a multi instance Tomcat Platform
-
-Execute the AppdApp TFCB workspace to set up multiple instances of Tomcat Application server with each hosting a single microservice. Retrieve the VM IP from the AppdInfra workspace Outputs. 
-
-View the application deployment status at:
-
-http://<vm_infra_ip>:8085/tools.descartes.teastore.webui/status
-
-![alt text](https://github.com/prathjan/images/blob/main/teastatus.png?raw=true)
-
-View the application at:
-
-http://<vm_infra_ip>:8085/tools.descartes.teastore.webui/
-
-![alt text](https://github.com/prathjan/images/blob/main/tea.png?raw=true)
-
-
-### Step 9: Generate Application Load
-
-Execute the AppdLoad workspace to generate load for the apps deployed
 
 ### View Application Insights in AppDynamics 
 
