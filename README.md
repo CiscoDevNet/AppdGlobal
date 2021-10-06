@@ -179,6 +179,8 @@ Due to a known error, you will have to manually delete the SuperChaiStore applic
             
 ### Undeploy applications and deprovision infrastructure
 
+ICO Workflows do not support deleting TFCB workspaces at this time. So, we will have to terminate and clean up leveraging TFCB.
+
 Destroy the TFCB workspaces in this order:
 
 AppdLoad
