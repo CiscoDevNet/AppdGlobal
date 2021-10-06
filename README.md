@@ -102,21 +102,21 @@ Open Orchestration-> UpdateLegacyVars->Update AppdGlobal Variables Task:
 
  Add the following variables:
 
-vsphere_user(administrator@vsphere.local)
+vsphere_user(eg. administrator@vsphere.local)
 
-vm_memory(8192)
+vm_memory(eg. 8192)
 
-nbrapm(8)
+nbrapm(eg. 8)
 
-nbrma(1)
+nbrma(eg. 1)
 
-nbrsim(1)
+nbrsim(eg. 1)
 
-nbrnet(0)
+nbrnet(eg. 0)
 
-vm_cpu(4)
+vm_cpu(eg. 4)
 
-vm_count (1)
+vm_count (eg. 1)
 
 Add the following sensitive variables:
 root_password
@@ -127,25 +127,25 @@ vsphere_password
 
 Next, open Orchestration-> UpdateLegacyVars->Update AppdGlobal Variables2 Task and add the following variables:
 
-appport(8085)
+appport(eg. 8085)
 
-vsphere_server(10.88.168.24)
+vsphere_server(eg. 10.88.168.24)
 
-datacenter(Piso14-Lab)
+datacenter(eg. Piso14-Lab)
 
-resource_pool(ccmsuite)
+resource_pool(eg. ccmsuite)
 
-datastore_name(CCPHXM4)
+datastore_name(eg. CCPHXM4)
 
-network_name(vm-network-6)
+network_name(eg. vm-network-6)
 
-template_name(ubuntu-tmp)
+template_name(eg. ubuntu-tmp)
 
-vm_folder(terraform)
+vm_folder(eg. terraform)
 
-vm_prefix(terraform-)
+vm_prefix(eg. terraform-)
 
-vm_domain(lab14.lc)
+vm_domain(eg. lab14.lc)
 
 
 ## Step 4: Execute ICO template for App Services Deployment and Instrumentation
