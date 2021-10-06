@@ -101,30 +101,48 @@ Open Orchestration-> UpdateLegacyVars->Update AppdGlobal Variables Task:
  Add the following variables:
 
 vsphere_user(administrator@vsphere.local)
+
 vm_memory(8192)
+
 nbrapm(8)
+
 nbrma(1)
+
 nbrsim(1)
+
 nbrnet(0)
+
 vm_cpu(4)
+
 vm_count (1)
 
 Add the following sensitive variables:
 root_password
+
 mysql_pass
+
 vsphere_password
 
 Next, open Orchestration-> UpdateLegacyVars->Update AppdGlobal Variables2 Task and add the following variables:
 
 appport(8085)
+
 vsphere_server(10.88.168.24)
+
 datacenter(Piso14-Lab)
+
 resource_pool(ccmsuite)
+
 datastore_name(CCPHXM4)
+
 network_name(vm-network-6)
+
 template_name(ubuntu-tmp)
+
 vm_folder(terraform)
+
 vm_prefix(terraform-)
+
 vm_domain(lab14.lc)
 
 
