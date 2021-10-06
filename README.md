@@ -1,4 +1,4 @@
-# Instrumenting legacy Tomcat application for business insights with Intersight Cloud Orchestrator (ICO)
+# Instrumenting legacy Tomcat application for AppDynamics business insights with Intersight Cloud Orchestrator (ICO)
 ## Contents
         Use Case
 
