@@ -29,7 +29,7 @@
 
 * As DevOps and App Developer, use Intersight and AppDynamics to view app and infrastructure insights for Full Stack Observability
 
-Thi use case addresses the second flow in the below diagram:
+This use case addresses the second flow in the below diagram:
 
 ![alt text](https://github.com/prathjan/images/blob/main/AppdTomcat3.png?raw=true)
 
