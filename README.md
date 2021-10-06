@@ -85,7 +85,7 @@ Import the template ** Exportlegacy.json ** in Intersight:
 
 ## Step 2: Importing ICO template for App Services Load Generation
 
-Import the template ** Exportlegacy.json ** in Intersight:
+Import the template ** ExportOnlyLoad.json ** in Intersight:
 
 ![alt text](https://github.com/prathjan/images/blob/main/importload.png?raw=true)
 
