@@ -187,7 +187,7 @@ Execute the AppdRemove workspace to remove all the entities created in AppDynami
 
 Due to a known error, you will have to manually delete the SuperChaiStore application from AppDynamics to complete the cleanup:
 
-![alt text](https://github.com/prathjan/images/blob/main/appddel.png?raw=true)
+![alt text](https://github.com/prathjan/images/blob/main/appd5.png?raw=true)
             
 ### Undeploy applications and deprovision infrastructure
 
