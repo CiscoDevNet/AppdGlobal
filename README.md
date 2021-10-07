@@ -185,7 +185,7 @@ Checkout the infrastructure insights in Intersight:
 
 Execute the AppdRemove workspace to remove all the entities created in AppDynamics.
 
-Due to a known error, you will have to manually delete the SuperChaiStore application from AppDynamics to complete the cleanup:
+Due to a known error, you will have to manually delete the MasalaChaiStore application from AppDynamics to complete the cleanup:
 
 ![alt text](https://github.com/prathjan/images/blob/main/appd5.png?raw=true)
             
