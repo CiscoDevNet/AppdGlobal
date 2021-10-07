@@ -171,13 +171,15 @@ Pick up the Agent Pool ID and token from your TFCB account
 
 Checkout the application insights in AppDynamics:
 
-![alt text](https://github.com/prathjan/images/blob/main/appd.png?raw=true)
+![alt text](https://github.com/prathjan/images/blob/main/appd2.png?raw=true)
+
+![alt text](https://github.com/prathjan/images/blob/main/appd3.png?raw=true)
 
 ### View Application Insights in Intersight
 
 Checkout the infrastructure insights in Intersight:
 
-![alt text](https://github.com/prathjan/images/blob/main/optimize.png?raw=true)
+![alt text](https://github.com/prathjan/images/blob/main/appd4.png?raw=true)
 
 ### Interfacing with AppDynamics Controller API for De-provisioning - Use RBAC script to remove AppDynamics User and license rule
 
