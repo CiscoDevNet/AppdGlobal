@@ -152,6 +152,16 @@ vm_domain(eg. lab14.lc)
 
 ![alt text](https://github.com/prathjan/images/blob/main/exelegacy.png?raw=true)
 
+You will be prompted for the following data:
+
+![alt text](https://github.com/prathjan/images/blob/main/exeparams.png?raw=true)
+
+Pick up the Agent Pool ID and token from your TFCB account
+
+![alt text](https://github.com/prathjan/images/blob/main/tfcb1.png?raw=true)
+
+![alt text](https://github.com/prathjan/images/blob/main/tfcb2.png?raw=true)
+
 ## Step 5: Execute ICO Workflow for App Services Load Generation
 
 ![alt text](https://github.com/prathjan/images/blob/main/exeload.png?raw=true)
