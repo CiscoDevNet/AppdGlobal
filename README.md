@@ -110,7 +110,7 @@ In Intersight, you will set up the data specific to your environment in this ste
 
 Open Orchestration-> UpdateLegacyVars->Add AppdGlobal Variables Task:
 
-![alt text](https://github.com/prathjan/images/blob/main/globvar1.png?raw=true)
+![alt text](https://github.com/prathjan/images/blob/main/globalvar1.png?raw=true)
 
 Add the following variables, the data will be as it applies to your own specific environment:
 
@@ -152,7 +152,7 @@ vm_domain - TBD(eg. lab14.lc)
 
 Open Orchestration-> UpdateLegacyVars->Add AppdGlobal Variables Sensitive Task:
 
-![alt text](https://github.com/prathjan/images/blob/main/globvar2.png?raw=true)
+![alt text](https://github.com/prathjan/images/blob/main/globalvar2.png?raw=true)
 
 Add the following variables, TBD's will be as it applies to your own specific environment:
 
