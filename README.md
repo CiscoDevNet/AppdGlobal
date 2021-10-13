@@ -111,7 +111,7 @@ UpdateLegacyWorkspaceVars - Updates the variables for the TFCB workspaces
 
 InvokeLegacyPlansBase - Sets up the infrastructure components
 
-InvokeLegacyApps - Instlls the Apps wit AppDynamics instrumentation
+InvokeLegacyApps - Installs the Apps with AppDynamics instrumentation
 
 ## Step 2: Importing ICO template for App Services Load Generation
 
