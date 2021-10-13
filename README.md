@@ -99,12 +99,31 @@ Import the template ** Exportlegacy.json ** in Intersight:
 
 ![alt text](https://github.com/prathjan/images/blob/main/importleg.png?raw=true)
 
+Review the worflows imported. The workflows leverage IST/TFCB Git repos referenced in Step 2 here: https://developer.cisco.com/codeexchange/github/repo/prathjan/SvcAppdGlobal
+
+![alt text](https://github.com/prathjan/images/blob/main/sumary.png?raw=true)
+
+In short:
+
+SetupLegacyWorkspaces - Sets up the TFCB workspaces for AppdGlobal, AppdDb, AppdInfra, AppdSaas, AppdRbac, AppdApp, AppdLoad, AppdRemove. Details of what these workspaces are used for is enumerated here: https://developer.cisco.com/codeexchange/github/repo/prathjan/SvcAppdGlobal
+
+UpdateLegacyWorkspaceVars - Updates the variables for the TFCB workspaces
+
+InvokeLegacyPlansBase - Sets up the infrastructure components
+
+InvokeLegacyApps - Instlls the Apps wit AppDynamics instrumentation
+
 ## Step 2: Importing ICO template for App Services Load Generation
 
 Import the template ** ExportOnlyLoad.json ** in Intersight:
 
 ![alt text](https://github.com/prathjan/images/blob/main/importload.png?raw=true)
 
+Review the worflows imported:
+
+![alt text](https://github.com/prathjan/images/blob/main/sumary2.png?raw=true)
+
+This workflow spins up a VM and runs the application load generator.
 
 ## Step 3: Setup AppdGlobal Variables
 
