@@ -101,7 +101,7 @@ Import the template ** Exportlegacy.json ** in Intersight:
 
 Review the worflows imported. The workflows leverage IST/TFCB Git repos referenced in Step 2 here: https://developer.cisco.com/codeexchange/github/repo/prathjan/SvcAppdGlobal
 
-![alt text](https://github.com/prathjan/images/blob/main/sumary.png?raw=true)
+![alt text](https://github.com/prathjan/images/blob/main/summry1.png?raw=true)
 
 In short:
 
@@ -121,7 +121,7 @@ Import the template ** ExportOnlyLoad.json ** in Intersight:
 
 Review the worflows imported:
 
-![alt text](https://github.com/prathjan/images/blob/main/sumary2.png?raw=true)
+![alt text](https://github.com/prathjan/images/blob/main/summry2.png?raw=true)
 
 This workflow spins up a VM and runs the application load generator.
 
