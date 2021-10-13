@@ -12,13 +12,25 @@
 
             Step 2: Importing ICO template for App Services Load Generation
 
-            Step 3: Setup global data
+            Step 3: Setup AppdGlobal Variables
 
-            Step 4: Execute ICO template for App Services Deployment and Instrumentation
+            Step 4: Setup AppdInfra Variables
 
-            Step 5: Execute ICO template for App Services Load Generation
+            Step 5: Setup AppdDb Variables
 
-            Step 6: View AppDynamics Insights
+            Step 6: Setup AppdSaas Variables
+
+            Step 7: Setup AppdRbac Variables
+
+            Step 8: Setup AppdApp Variables
+
+            Step 9: Setup AppdLoad Variables
+
+            Step 10: Execute ICO template for App Services Deployment and Instrumentation
+
+            Step 11: Execute ICO template for App Services Load Generation
+
+            Step 12: View AppDynamics Insights
 
         Undeploy applications and deprovision infrastructure
 
@@ -92,63 +104,165 @@ Import the template ** ExportOnlyLoad.json ** in Intersight:
 ![alt text](https://github.com/prathjan/images/blob/main/importload.png?raw=true)
 
 
-## Step 3: Setup global data
+## Step 3: Setup AppdGlobal Variables
 
 In Intersight, you will set up the data specific to your environment in this step. 
 
-Open Orchestration-> UpdateLegacyVars->Update AppdGlobal Variables Task:
+Open Orchestration-> UpdateLegacyVars->Add AppdGlobal Variables Task:
 
-![alt text](https://github.com/prathjan/images/blob/main/globvar.png?raw=true)
+![alt text](https://github.com/prathjan/images/blob/main/globvar1.png?raw=true)
 
- Add the following variables:
+Add the following variables, the data will be as it applies to your own specific environment:
 
-vsphere_user(eg. administrator@vsphere.local)
+vsphere_user - TBD(eg. administrator@vsphere.local)
 
-vm_memory(eg. 8192)
+vm_memory - TBD(eg. 8192)
 
-nbrapm(eg. 8)
+nbrapm - TBD(eg. 8)
 
-nbrma(eg. 1)
+nbrma - TBD(eg. 1)
 
-nbrsim(eg. 1)
+nbrsim - TBD(eg. 1)
 
 nbrnet(eg. 0)
 
-vm_cpu(eg. 4)
+vm_cpu - TBD(eg. 4)
 
-vm_count (eg. 1)
+vm_count - TBD (eg. 1)
 
-Add the following sensitive variables:
-root_password
+appport - TBD(eg. 8085)
 
-mysql_pass
+vsphere_server - TBD(eg. 10.88.168.24)
 
-vsphere_password
+datacenter - TBD(eg. Piso14-Lab)
 
-Next, open Orchestration-> UpdateLegacyVars->Update AppdGlobal Variables2 Task and add the following variables:
+resource_pool - TBD(eg. ccmsuite)
 
-appport(eg. 8085)
+datastore_name - TBD(eg. CCPHXM4)
 
-vsphere_server(eg. 10.88.168.24)
+network_name - TBD(eg. vm-network-6)
 
-datacenter(eg. Piso14-Lab)
+template_name - TBD(eg. ubuntu-tmp)
 
-resource_pool(eg. ccmsuite)
+vm_folder - TBD(eg. terraform)
 
-datastore_name(eg. CCPHXM4)
+vm_prefix - TBD(eg. terraform-)
 
-network_name(eg. vm-network-6)
+vm_domain - TBD(eg. lab14.lc)
 
-template_name(eg. ubuntu-tmp)
+Open Orchestration-> UpdateLegacyVars->Add AppdGlobal Variables Sensitive Task:
 
-vm_folder(eg. terraform)
+![alt text](https://github.com/prathjan/images/blob/main/globvar2.png?raw=true)
 
-vm_prefix(eg. terraform-)
+Add the following variables, TBD's will be as it applies to your own specific environment:
 
-vm_domain(eg. lab14.lc)
+root_password - TBD
 
+mysql_pass - TBD
 
-## Step 4: Execute ICO Workflow for App Services Deployment and Instrumentation
+vsphere_password - TBD
+
+## Step 4: Setup AppdInfra Variables
+
+Open Orchestration-> UpdateLegacyVars->Add AppdInfra Variables Task:
+
+![alt text](https://github.com/prathjan/images/blob/main/infra.png?raw=true)
+
+Add the following variables, TBD's will be as it applies to your own specific environment:
+
+globalwsname - AppdGlobal
+
+dbvmwsname - AppdDb
+
+org - TBD (eg. Lab14)
+
+## Step 5: Setup AppdDb Variables
+
+Open Orchestration-> UpdateLegacyVars->Add AppdDb Variables Task:
+
+![alt text](https://github.com/prathjan/images/blob/main/db.png?raw=true)
+
+Add the following variables, TBD's will be as it applies to your own specific environment:
+
+globalwsname - AppdGlobal
+
+org - TBD (eg. Lab14)
+
+## Step 6: Setup AppdSaas Variables
+
+Open Orchestration-> UpdateLegacyVars->Add AppdSaas Variables Task:
+
+![alt text](https://github.com/prathjan/images/blob/main/saas.png?raw=true)
+
+Add the following variables, TBD's will be as it applies to your own specific environment:
+
+appname - TBD (eg. MasalaChaiStore)
+
+javaver - 21.5.0.32605
+
+infraver - 21.5.0.1784
+
+machinever - 21.6.0.3155
+
+ibmver - 21.6.0.32801
+
+url - TBD (eg. https://devnet.saas.appdynamics.com)
+
+zerover - 21.6.0.232
+
+Add the following sensitive variables, TBD's will be as it applies to your own specific environment:
+
+clientid - TBD
+
+clientsecret - TBD
+
+## Step 7: Setup AppdRbac Variables
+
+Open Orchestration-> UpdateLegacyVars->Add AppdRbac Variables Task:
+
+![alt text](https://github.com/prathjan/images/blob/main/rbac.png?raw=true)
+
+Add the following variables, TBD's will be as it applies to your own specific environment:
+
+appvmwsname - AppdInfra
+
+saaswsname - AppdSaas
+
+globalwsname - AppdGlobal
+
+org - TBD (eg. Lab14)
+
+## Step 8: Setup AppdApp Variables
+
+Open Orchestration-> UpdateLegacyVars->Add AppdApp Variables Task:
+
+![alt text](https://github.com/prathjan/images/blob/main/app.png?raw=true)
+
+Add the following variables, TBD's will be as it applies to your own specific environment:
+
+appvmwsname - AppdInfra
+
+dbvmwsname - AppdDb
+
+globalwsname - AppdGlobal
+
+org - TBD (eg. Lab14)
+
+## Step 9: Setup AppdLoad Variables
+
+![alt text](https://github.com/prathjan/images/blob/main/load.png?raw=true)
+
+Add the following variables, TBD's will be as it applies to your own specific environment:
+
+appvmwsname - AppdInfra
+
+trigcount - 20
+
+globalwsname - AppdGlobal
+
+org - TBD (eg. Lab14)
+
+## Step 10: Execute ICO Workflow for App Services Deployment and Instrumentation
 
 ![alt text](https://github.com/prathjan/images/blob/main/exelegacy.png?raw=true)
 
@@ -162,10 +276,12 @@ Pick up the Agent Pool ID and token from your TFCB account
 
 ![alt text](https://github.com/prathjan/images/blob/main/tfcb2.png?raw=true)
 
-## Step 5: Execute ICO Workflow for App Services Load Generation
+## Step 11: Execute ICO Workflow for App Services Load Generation
 
 ![alt text](https://github.com/prathjan/images/blob/main/exeload.png?raw=true)
 
+
+## Step 12 View AppDynamics Insights
 
 ### View Application Insights in AppDynamics 
 
