@@ -57,6 +57,8 @@ This use case addresses the second flow in the below diagram:
 
 5. You will also need an account in AppDynamics SAAS Controller and should have the API Client ID and Client Secret.
 
+6. You will need to have some minimal knowledge if Intersight ICO. Please review tutorials on Youtube as well as the following: https://intersight.com/help/saas/features/orchestration/configure#intersight_cloud_orchestrator
+
 ### Intersight Target configuration for AppDynamics and on prem entities
 
 You will log into your Intersight account and create the following targets. Please refer to Intersight docs for details on how to create these Targets:
